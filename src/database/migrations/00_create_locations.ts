@@ -1,0 +1,20 @@
+import { Knex } from 'knex'
+
+export async function up(knex: Knex) {
+  return knex.schema.createTable('locations', 
+    table => {
+      table.increments('id').primary  //chave primária c/ autoincremento 
+      table.string('name').notNullable()
+      table.string('image').notNullable()
+      table.string('email').notNullable()
+      table.string('whatsapp').notNullable()
+      table.string('latitude').notNullable()
+      table.string('longitude').notNullable()
+      table.string('city').notNullable()
+      table.string('uf').notNullable()
+    })
+}
+
+export async function down(knex: Knex) {
+  return knex.schema.dropTable('locations')
+}
