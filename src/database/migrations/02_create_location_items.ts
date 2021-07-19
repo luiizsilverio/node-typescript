@@ -5,12 +5,12 @@ export async function up(knex: Knex) {
     table => {
       table.increments('id').primary  //chave primária c/ autoincremento 
       
-      table.string('location_id')
+      table.integer('location_id')
         .notNullable()      
         .references('id')
         .inTable('locations')
 
-      table.string('item_id')
+      table.integer('item_id')
         .notNullable()      
         .references('id')
         .inTable('items')
