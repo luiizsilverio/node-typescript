@@ -9,7 +9,7 @@ itemsRouter.get('/', async (req, resp) => {
   const newItems = items.map(item => {
     return {
       ...item,
-      image_url: `http://localhost:3333/images/${item.image}`
+      image_url: `http://localhost:3333/uploads/${item.image}`
     }
   })
   

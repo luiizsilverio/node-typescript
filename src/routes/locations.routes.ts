@@ -1,7 +1,11 @@
 import { Router } from 'express'
 import db from '../database/connection'
+import multer from 'multer'
+import multerConfig from '../config/multer'
 
 const locationsRouter = Router()
+
+const upload = multer(multerConfig)
 
 // Lista todos os registros da tabela locations
 locationsRouter.get('/', async (req, resp) => {
@@ -101,6 +105,30 @@ locationsRouter.post('/', async (req, resp) => {
     id: locationId,
     ...location
   })
+})
+
+// Alteraçao da imagem de uma location 
+// Rota do tipo multipart-form
+// O arquivo vem no campo image, do tipo File 
+locationsRouter.put('/:id', upload.single('image'), async (req, resp) => {
+  const { id } = req.params
+
+  const image = req.file?.filename || '' 
+
+  const location = await db('locations').where('id', id).first()
+
+  if (!location) {
+    return resp.status(400).json({ message: 'Location not found' })
+  }
+  
+  const locationUpdated = {
+    ...location,
+    image
+  }
+
+  await db('locations').update(locationUpdated).where('id', id)
+
+  return resp.json(locationUpdated)  
 })
 
 export default locationsRouter
