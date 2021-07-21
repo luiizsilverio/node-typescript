@@ -1,27 +1,36 @@
 import { Router } from 'express'
 import db from '../database/connection'
 import multer from 'multer'
+import { celebrate, Joi } from 'celebrate'
+
 import multerConfig from '../config/multer'
 
 const locationsRouter = Router()
 
 const upload = multer(multerConfig)
 
-// Lista todos os registros da tabela locations
+// Lista os registros da tabela locations, 
+// com filtro opcional por city, uf e items
 locationsRouter.get('/', async (req, resp) => {
   const { city, uf, items } = req.query
+  let locations
   
-  const parsedItems = String(items).split(',')
-    .map(item => Number(item.trim()))
+  if (city && uf && items) {
+    const parsedItems: Number[] = String(items).split(',')
+      .map(item => Number(item.trim()))
 
-  const locations = await db('locations')
-    .join('location_items', 'locations.id', '=', 'location_items.location_id')
-    .whereIn('location_items.item_id', parsedItems)
-    .where('city', String(city))
-    .where('uf', String(uf))
-    .distinct()
-    .select('locations.*')
-  
+    locations = await db('locations')
+      .join('location_items', 'locations.id', '=', 'location_items.location_id')
+      .whereIn('location_items.item_id', parsedItems)
+      .where('city', String(city))
+      .where('uf', String(uf))
+      .distinct()
+      .select('locations.*')
+  }
+  else {
+    locations = await db.select().from('locations')
+  }
+
   return resp.json(locations)
 })
 
@@ -54,8 +63,22 @@ locationsRouter.get('/items', async (req, resp) => {
   return resp.json(locations)
 })
 
+const schema = Joi.object().keys({
+  name: Joi.string().required(),
+  email: Joi.string().required().email(),
+  whatsapp: Joi.string().required(),
+  latitude: Joi.number().required,
+  longitude: Joi.number().required,
+  city: Joi.string().required(),
+  uf: Joi.string().required().max(2),
+  items: Joi.array().required()
+})
+
 // Inclui um novo registro na tabela locations
-locationsRouter.post('/', async (req, resp) => {
+locationsRouter.post('/', 
+  celebrate({ body: schema }, { abortEarly: true }), 
+  async (req, resp) => {
+    
   const {
     name,
     email,
@@ -132,3 +155,4 @@ locationsRouter.put('/:id', upload.single('image'), async (req, resp) => {
 })
 
 export default locationsRouter
+

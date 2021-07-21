@@ -8,13 +8,16 @@
     "devFast": "ts-node-dev src/server.ts --transpile-only",
     "build": "tsc",
     "build:babel": "babel ./src --extensions \".js,.ts\" --out-dir dist --copy-files",
-    "knex:migrate": "knex --knexfile knexfile.ts migrate:latest",
-    "knex:seed": "knex --knexfile knexfile.ts seed:run"
+    "knex:migrate": "knex --knexfile ./src/knexfile.ts migrate:latest",
+    "knex:seed": "knex --knexfile ./src/knexfile.ts seed:run",
+    "knex:new": "knex --knexfile ./src/knexfile.ts migrate:make",
+    "knex:rollback": "knex --knexfile ./src/knexfile.ts migrate:rollback"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@types/cors": "^2.8.12",
+    "celebrate": "^15.0.0",
     "cors": "^2.8.5",
     "cowsay": "^1.5.0",
     "express": "^4.17.1",
