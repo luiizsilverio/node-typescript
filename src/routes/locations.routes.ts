@@ -1,8 +1,8 @@
 import { Router } from 'express'
-import db from '../database/connection'
 import multer from 'multer'
 import { celebrate, Joi } from 'celebrate'
 
+import db from '../database/connection'
 import multerConfig from '../config/multer'
 
 const locationsRouter = Router()
@@ -67,8 +67,8 @@ const schema = Joi.object().keys({
   name: Joi.string().required(),
   email: Joi.string().required().email(),
   whatsapp: Joi.string().required(),
-  latitude: Joi.number().required,
-  longitude: Joi.number().required,
+  latitude: Joi.number().required(),
+  longitude: Joi.number().required(),
   city: Joi.string().required(),
   uf: Joi.string().required().max(2),
   items: Joi.array().required()
@@ -76,7 +76,7 @@ const schema = Joi.object().keys({
 
 // Inclui um novo registro na tabela locations
 locationsRouter.post('/', 
-  celebrate({ body: schema }, { abortEarly: true }), 
+  celebrate({ body: schema }, { abortEarly: false }), 
   async (req, resp) => {
     
   const {
@@ -97,35 +97,35 @@ locationsRouter.post('/',
     latitude,
     longitude,
     city,
-    uf,
-    image: "empty.jpg"
+    uf, 
+    image: 'empty.png'
   }
 
   const transaction = await db.transaction()
 
   const newIds = await transaction('locations').insert(location)
-  const locationId = newIds[0]
 
-  const locationItems = items.map(async (item_id: number) => {
-    const achouItem = await transaction('items').where('id', item_id).first()
-  
+  const location_id = newIds[0]
+
+  const locationItems = items.map((item_id: number) => {
+    const achouItem = transaction('items').where('id', item_id).first()
+    
     if (!achouItem) {
       return resp.status(400).json({ message: 'Item not found'})
     }
 
     return {
       item_id,
-      location_id: locationId
+      location_id
     }
   })
-
 
   await transaction('location_items').insert(locationItems)
 
   await transaction.commit()
 
   return resp.json({
-    id: locationId,
+    id: location_id,
     ...location
   })
 })
