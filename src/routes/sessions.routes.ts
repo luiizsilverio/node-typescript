@@ -1,21 +1,23 @@
 import { response, Router } from 'express'
 import { compare } from 'bcryptjs'
+import { sign } from 'jsonwebtoken'
 
 import db from '../database/connection'
+import authConfig from '../config/auth'
 
 const sessionsRouter = Router()
 
 sessionsRouter.post('/', async (req, resp) => {
   const { email, password } = req.body
   
-  // 1) Verificar se o e-mail existe na tabela de usuários
+  // Verifica se o e-mail existe na tabela de usuários
   const user = await db('users').where('email', email).first()
 
   if (!user) {
     return resp.status(400).json({ error: "Credentials not found" })
   }
 
-  // 2) Comparar a senha da requisição (não criptografada) 
+  // Compara a senha da requisição (não criptografada) 
   // com a senha criptografada da tabela users
   const passwordOK = await compare(password, user.password)
 
@@ -23,9 +25,15 @@ sessionsRouter.post('/', async (req, resp) => {
     return resp.status(400).json({ error: "Credentials not found" })
   }
   
-  console.log(user)
+  // Gera o token JWT
+  const token = sign({}, authConfig.jwt.secret, {
+    subject: String(user.id),
+    expiresIn: authConfig.jwt.expiresIn //'1d'
+  })
+
+  delete user.password // retira a senha do objeto user
   
-  return resp.json(user)
+  return resp.json({ user, token })
 })
 
 export default sessionsRouter

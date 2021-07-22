@@ -4,10 +4,14 @@ import { celebrate, Joi } from 'celebrate'
 
 import db from '../database/connection'
 import multerConfig from '../config/multer'
+import isAuthenticated from '../middlewares/isAuthenticated'
 
 const locationsRouter = Router()
 
 const upload = multer(multerConfig)
+
+// Middleware de autenticação
+locationsRouter.use(isAuthenticated)
 
 // Lista os registros da tabela locations, 
 // com filtro opcional por city, uf e items
