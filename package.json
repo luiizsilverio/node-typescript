@@ -1,11 +1,12 @@
 {
-  "name": "backend-ts",
+  "name": "curso-node",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "dev": "ts-node-dev --inspect --ignore-watch node_modules src/server.ts",
     "devFast": "ts-node-dev src/server.ts --transpile-only",
+    "start": "node dist/server.js",
     "build": "tsc",
     "build:babel": "babel ./src --extensions \".js,.ts\" --out-dir dist --copy-files",
     "knex:migrate": "knex --knexfile ./src/knexfile.ts migrate:latest",
