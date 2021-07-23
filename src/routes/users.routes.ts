@@ -7,7 +7,7 @@ import db from '../database/connection'
 const usersRouter = Router()
 
 usersRouter.get('/', async(req, resp) => {
-  const users = await db.select().table('users')
+  const users = await db('users').select('*')
 
   return resp.json(users)
 })
