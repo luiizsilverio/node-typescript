@@ -61,7 +61,7 @@ itemsRouter.get('/', function (req, resp) { return __awaiter(void 0, void 0, voi
             case 1:
                 items = _a.sent();
                 newItems = items.map(function (item) {
-                    return __assign(__assign({}, item), { image_url: "http://localhost:3333/uploads/" + item.image });
+                    return __assign(__assign({}, item), { image_url: process.env.APP_URL + "/uploads/" + item.image });
                 });
                 return [2 /*return*/, resp.json(newItems)];
         }

@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var express_1 = __importDefault(require("express"));
 var path_1 = __importDefault(require("path"));
 var cors_1 = __importDefault(require("cors"));
+require("dotenv/config");
 var celebrate_1 = require("celebrate");
 var cowsay_1 = __importDefault(require("cowsay"));
 var routes_1 = __importDefault(require("./routes"));
@@ -15,6 +16,7 @@ app.use(express_1.default.json());
 app.use(routes_1.default);
 app.use('/uploads', express_1.default.static(path_1.default.resolve(__dirname, '..', 'uploads')));
 app.use(celebrate_1.errors());
-app.listen(3333, function () {
-    console.log(cowsay_1.default.say({ text: 'Servidor rodando na porta 3333' }));
+var porta = process.env.PORT || 3333;
+app.listen(porta, function () {
+    console.log(cowsay_1.default.say({ text: "Servidor rodando na porta " + porta }));
 });
