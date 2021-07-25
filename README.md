@@ -6,7 +6,7 @@
 * [Contato](#email-contato)
 
 ## Sobre o projeto
-API desenvolvida em NodeJS + Express durante o [minicurso](https://www.youtube.com/watch?v=M-pNDHC25Vg&list=PLE0DHiXlN_qp251xWxdb_stPj98y1auhc) do prof. Aluizio :mortar_board:.
+API desenvolvida em NodeJS + Express durante o [minicurso](https://www.youtube.com/watch?v=M-pNDHC25Vg&list=PLE0DHiXlN_qp251xWxdb_stPj98y1auhc) do prof. Aluizio :mortar_board:
 <br />
 Uso de autenticação JWT, upload de imagens, acesso a banco de dados SQLite por meio do Knex.
 <br />
