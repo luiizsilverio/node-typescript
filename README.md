@@ -6,13 +6,13 @@
 * [Contato](#email-contato)
 
 ## Sobre o projeto
-<p>API desenvolvida em NodeJS + Express durante o ![minicurso](https://www.youtube.com/watch?v=M-pNDHC25Vg&list=PLE0DHiXlN_qp251xWxdb_stPj98y1auhc) do prof. Aluizio</p>
+<p>API desenvolvida em NodeJS + Express durante o [minicurso](https://www.youtube.com/watch?v=M-pNDHC25Vg&list=PLE0DHiXlN_qp251xWxdb_stPj98y1auhc) do prof. Aluizio</p>
 <p>Uso de autenticação JWT, upload de imagens, acesso a banco de dados SQLite por meio do Knex.</p>
-<p>API publicada na plataforma Heroku, ![aqui](https://curso-node-aluizio.herokuapp.com).</p>
+<p>API publicada na plataforma Heroku, [aqui](https://curso-node-aluizio.herokuapp.com).</p>
 <br />
 ### Rotas da API
 Rota | endpoint                 | Descrição
------|--------------------------|---------------------------------------------------------------
+—————|——————————————————————————|———————————————————————————————————————————————————————————————
 POST | /sessions                | Rota de autenticação, recebe email e senha retorna o token JWT
 GET  | /users                   | Retorna a lista de usuários
 POST | /users                   | Cadastra novo usuário e retorna o id
@@ -26,7 +26,7 @@ POST | /locations               | Cadastra nova location (objeto no body da requ
 ## :hammer_and_wrench: Tecnologias
 * <ins>NodeJS + Express</ins>
 * <ins>Typescript</ins>
-* <ins>bcryptjs</ins> para criptografia de senha
+* <ins>bcryptjs</ins> para criptografia da senha
 * <ins>jsonwebtoken</ins> para geração do token JWT
 * Banco de dados <ins>SQLite</ins>
 * <ins>Knex</ins> para acessar o banco
