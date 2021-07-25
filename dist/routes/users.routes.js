@@ -59,7 +59,7 @@ usersRouter.get('/', function (req, resp) { return __awaiter(void 0, void 0, voi
     var users;
     return __generator(this, function (_a) {
         switch (_a.label) {
-            case 0: return [4 /*yield*/, connection_1.default.select().table('users')];
+            case 0: return [4 /*yield*/, connection_1.default('users').select('*')];
             case 1:
                 users = _a.sent();
                 return [2 /*return*/, resp.json(users)];
