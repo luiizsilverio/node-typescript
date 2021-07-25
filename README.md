@@ -12,18 +12,18 @@ Uso de autenticação JWT, upload de imagens, acesso a banco de dados SQLite por
 <br />
 API publicada na plataforma Heroku, [aqui](https://curso-node-aluizio.herokuapp.com).
 
-## Rotas da API
+### Rotas da API
 
-|Rota | endpoint                 | Descrição
-|—————|——————————————————————————|————————————————————————————————————————————————————————————————|
-|POST | /sessions                | Rota de autenticação, recebe email e senha retorna o token JWT |
-|GET  | /users                   | Retorna a lista de usuários |
-|POST | /users                   | Cadastra novo usuário e retorna o id |
-|GET  | /items                   | Retorna a lista de itens |
-|GET  | /locations               | Retorna a lista de locations |
-|GET  | /locations/:id           | Retorna os itens da location informada |
-|GET  | /locations?city&uf&items | Retorna as locations da cidade/uf informada |
-|POST | /locations               | Cadastra nova location (objeto no body da requisição |
+| Rota | endpoint | Descrição |
+|------|-------|-------|
+| POST | /sessions                | Rota de autenticação, recebe email e senha retorna o token JWT |
+| GET  | /users                   | Retorna a lista de usuários |
+| POST | /users                   | Cadastra novo usuário e retorna o id |
+| GET  | /items                   | Retorna a lista de itens |
+| GET  | /locations               | Retorna a lista de locations |
+| GET  | /locations/:id           | Retorna os itens da location informada |
+| GET  | /locations?city&uf&items | Retorna as locations da cidade/uf informada |
+| POST | /locations               | Cadastra nova location (objeto no body da requisição |
 
 ## :hammer_and_wrench: Tecnologias
 * <ins>NodeJS + Express</ins>
