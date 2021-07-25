@@ -6,11 +6,11 @@
 * [Contato](#email-contato)
 
 ## Sobre o projeto
-API desenvolvida em NodeJS + Express durante o [minicurso](https://www.youtube.com/watch?v=M-pNDHC25Vg&list=PLE0DHiXlN_qp251xWxdb_stPj98y1auhc) do prof. Aluizio.
+API desenvolvida em NodeJS + Express durante o [minicurso](https://www.youtube.com/watch?v=M-pNDHC25Vg&list=PLE0DHiXlN_qp251xWxdb_stPj98y1auhc) do prof. Aluizio :mortar_board:.
 <br />
 Uso de autenticação JWT, upload de imagens, acesso a banco de dados SQLite por meio do Knex.
 <br />
-API publicada na plataforma Heroku, [aqui](https://curso-node-aluizio.herokuapp.com).
+API publicada na plataforma Heroku, [:point_right: aqui](https://curso-node-aluizio.herokuapp.com).
 
 ### Rotas da API
 
@@ -26,15 +26,15 @@ API publicada na plataforma Heroku, [aqui](https://curso-node-aluizio.herokuapp.
 | POST | /locations               | Cadastra nova location (objeto no body da requisição |
 
 ## :hammer_and_wrench: Tecnologias
-* <ins>NodeJS + Express</ins>
-* <ins>Typescript</ins>
-* <ins>bcryptjs</ins> para criptografia da senha
-* <ins>jsonwebtoken</ins> para geração do token JWT
-* Banco de dados <ins>SQLite</ins>
-* <ins>Knex</ins> para acessar o banco
-* <ins>Celebrate</ins> para validar os dados da requisição
-* <ins>Multer</ins> para fazer upload de imagens
-* <ins>Cors</ins> para liberar o acesso da API
+* __NodeJS + Express__
+* __Typescript__
+* __bcryptjs__ para criptografia da senha
+* __jsonwebtoken__ para geração do token JWT
+* Banco de dados __SQLite__
+* __Knex__ para acessar o banco
+* __Celebrate__ para validar os dados da requisição
+* __Multer__ para fazer upload de imagens
+* __Cors__ para liberar o acesso da API
 
 ## :car: Iniciando o projeto
 ```bash
