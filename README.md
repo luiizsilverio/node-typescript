@@ -1,15 +1,16 @@
-# curso-node-aluizio
+# Curso-Node-Aluizio
 ## Conteúdo
 * [Sobre o Projeto](#sobre-o-projeto)
 * [Tecnologias](#hammer_and_wrench-tecnologias)
-* [Iniciando o Projeto](#car-Iniciando-o-projeto)
+* [Iniciando o Projeto](#car-iniciando-o-projeto)
 * [Contato](#email-contato)
 
 ## Sobre o projeto
-<p>API desenvolvida em NodeJS + Express durante o [minicurso](https://www.youtube.com/watch?v=M-pNDHC25Vg&list=PLE0DHiXlN_qp251xWxdb_stPj98y1auhc) do prof. Aluizio</p>
-<p>Uso de autenticação JWT, upload de imagens, acesso a banco de dados SQLite por meio do Knex.</p>
-<p>API publicada na plataforma Heroku, [aqui](https://curso-node-aluizio.herokuapp.com).</p>
+API desenvolvida em NodeJS + Express durante o [minicurso](https://www.youtube.com/watch?v=M-pNDHC25Vg&list=PLE0DHiXlN_qp251xWxdb_stPj98y1auhc) do prof. Aluizio.
 <br />
+Uso de autenticação JWT, upload de imagens, acesso a banco de dados SQLite por meio do Knex.
+<br />
+API publicada na plataforma Heroku, [aqui](https://curso-node-aluizio.herokuapp.com).
 
 ## Rotas da API
 
